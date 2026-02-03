@@ -32,6 +32,7 @@ public class ZakupyAdapter extends RecyclerView.Adapter<ZakupyAdapter.ProduktVie
     @Override
     public void onBindViewHolder(@NonNull ProduktViewHolder holder, int position) {
         holder.checkBoxView.setText(produkty.get(position).toString());
+
     }
 
     @Override
@@ -39,7 +40,7 @@ public class ZakupyAdapter extends RecyclerView.Adapter<ZakupyAdapter.ProduktVie
         return produkty.size();
     }
 
-    public class ProduktViewHolder extends RecyclerView.ViewHolder{
+    public class ProduktViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public CheckBox checkBoxView;
         ZakupyAdapter zakupyAdapter;
 
@@ -47,6 +48,19 @@ public class ZakupyAdapter extends RecyclerView.Adapter<ZakupyAdapter.ProduktVie
             super(itemView);
             checkBoxView = itemView.findViewById(R.id.checkBox);
             zakupyAdapter = adapter;
+        }
+
+        @Override
+        public void onClick(View view) {
+            int ktoruProdukt = getLayoutPosition();
+            if( produkty.get(ktoruProdukt).isCzyKupione()){
+                produkty.get(ktoruProdukt).setCzyKupione(false);
+            }
+            else{
+                produkty.get(ktoruProdukt).setCzyKupione(true);
+            }
+            checkBoxView.setChecked( produkty.get(ktoruProdukt).isCzyKupione());
+            zakupyAdapter.notifyDataSetChanged();
         }
     }
 }
