@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,26 +24,29 @@ public class ZakupyAdapter extends RecyclerView.Adapter<ZakupyAdapter.ProduktVie
     @NonNull
     @Override
     public ProduktViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = inflater.inflate(R.layout.product_layout,parent,false);
 
-
-        return null;
+        return new ProduktViewHolder(itemView,this);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ProduktViewHolder holder, int position) {
-
+        holder.checkBoxView.setText(produkty.get(position).toString());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return produkty.size();
     }
 
     public class ProduktViewHolder extends RecyclerView.ViewHolder{
+        public CheckBox checkBoxView;
+        ZakupyAdapter zakupyAdapter;
 
-
-        public ProduktViewHolder(@NonNull View itemView) {
+        public ProduktViewHolder(@NonNull View itemView, ZakupyAdapter adapter) {
             super(itemView);
+            checkBoxView = itemView.findViewById(R.id.checkBox);
+            zakupyAdapter = adapter;
         }
     }
 }
