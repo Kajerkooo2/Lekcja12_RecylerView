@@ -6,7 +6,7 @@ Layout Setup
 3. Dodanie widoku elementu do tego nowego layout
 4. Next -> uzupelnienie main layoutu -> dodanie recylerView (pamietac o dodaniu id do recyclerView bo domyslnie go nie ma)
 -------------------------------------------------------------------------------------------------------------------------
-   RecyclerView adapter class
+RecyclerView adapter class
 6. Dodanie ZakupyAdapter (adapter do RecyclerView) -> extends RecyclerView.Adapter<ZakupyAdapter.ProduktViewHolder(showContextAction -> implementMethods)
 potem ->  public class ProduktViewHolder extends RecyclerView.ViewHolder (kilkamy prawa showContextAction -> create constructor matching super)
 7. Dodawanie zmiennych -> potem generowanie consturctora (trzeba dodac w konstruktorze Context context potem by dodac do niego inflater -> patrz kod)
